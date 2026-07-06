@@ -1,0 +1,21 @@
+[package]
+name         = "nota-text-query"
+version      = "0.1.0"
+edition      = "2024"
+rust-version = "1.89"
+license      = "MIT OR Apache-2.0"
+repository   = "https://github.com/LiGoldragon/nota-text-query"
+description  = "Engine-neutral typed text query language with readable NOTA and rkyv surfaces."
+
+[lib]
+path = "src/lib.rs"
+
+[dependencies]
+nota = { package = "nota", git = "https://github.com/LiGoldragon/nota-next.git", branch = "main" }
+rkyv      = { version = "0.8", default-features = false, features = ["std", "bytecheck", "little_endian", "pointer_width_32", "unaligned"] }
+thiserror = "2"
+
+[lints.rust]
+unsafe_code = "forbid"
+unused      = { level = "warn", priority = -1 }
+dead_code   = "warn"
