@@ -5,17 +5,8 @@ use crate::evidence::{
 };
 use crate::text::{NormalizedWord, SearchText};
 
-#[derive(
-    nota::NotaEncode,
-    nota::NotaDecode,
-    rkyv::Archive,
-    rkyv::Serialize,
-    rkyv::Deserialize,
-    Clone,
-    Debug,
-    PartialEq,
-    Eq,
-)]
+#[cfg_attr(feature = "nota-text", derive(nota::NotaEncode, nota::NotaDecode))]
+#[derive(rkyv::Archive, rkyv::Serialize, rkyv::Deserialize, Clone, Debug, PartialEq, Eq)]
 #[rkyv(
     bytecheck(bounds(__C: rkyv::validation::ArchiveContext)),
     serialize_bounds(
@@ -69,17 +60,8 @@ impl Query {
     }
 }
 
-#[derive(
-    nota::NotaEncode,
-    nota::NotaDecode,
-    rkyv::Archive,
-    rkyv::Serialize,
-    rkyv::Deserialize,
-    Clone,
-    Debug,
-    PartialEq,
-    Eq,
-)]
+#[cfg_attr(feature = "nota-text", derive(nota::NotaEncode, nota::NotaDecode))]
+#[derive(rkyv::Archive, rkyv::Serialize, rkyv::Deserialize, Clone, Debug, PartialEq, Eq)]
 pub enum QueryTerm {
     Word(SearchWord),
     Phrase(SearchPhrase),
@@ -102,17 +84,8 @@ impl QueryTerm {
     }
 }
 
-#[derive(
-    nota::NotaEncode,
-    nota::NotaDecode,
-    rkyv::Archive,
-    rkyv::Serialize,
-    rkyv::Deserialize,
-    Clone,
-    Debug,
-    PartialEq,
-    Eq,
-)]
+#[cfg_attr(feature = "nota-text", derive(nota::NotaEncode, nota::NotaDecode))]
+#[derive(rkyv::Archive, rkyv::Serialize, rkyv::Deserialize, Clone, Debug, PartialEq, Eq)]
 pub struct SearchWord {
     pub value: String,
 }
@@ -143,17 +116,8 @@ impl SearchWord {
     }
 }
 
-#[derive(
-    nota::NotaEncode,
-    nota::NotaDecode,
-    rkyv::Archive,
-    rkyv::Serialize,
-    rkyv::Deserialize,
-    Clone,
-    Debug,
-    PartialEq,
-    Eq,
-)]
+#[cfg_attr(feature = "nota-text", derive(nota::NotaEncode, nota::NotaDecode))]
+#[derive(rkyv::Archive, rkyv::Serialize, rkyv::Deserialize, Clone, Debug, PartialEq, Eq)]
 pub struct SearchPhrase {
     pub words: Vec<String>,
 }
@@ -189,17 +153,8 @@ impl SearchPhrase {
     }
 }
 
-#[derive(
-    nota::NotaEncode,
-    nota::NotaDecode,
-    rkyv::Archive,
-    rkyv::Serialize,
-    rkyv::Deserialize,
-    Clone,
-    Debug,
-    PartialEq,
-    Eq,
-)]
+#[cfg_attr(feature = "nota-text", derive(nota::NotaEncode, nota::NotaDecode))]
+#[derive(rkyv::Archive, rkyv::Serialize, rkyv::Deserialize, Clone, Debug, PartialEq, Eq)]
 pub struct NearQuery {
     pub left: QueryTerm,
     pub right: QueryTerm,
@@ -234,9 +189,8 @@ impl NearQuery {
     }
 }
 
+#[cfg_attr(feature = "nota-text", derive(nota::NotaEncode, nota::NotaDecode))]
 #[derive(
-    nota::NotaEncode,
-    nota::NotaDecode,
     rkyv::Archive,
     rkyv::Serialize,
     rkyv::Deserialize,

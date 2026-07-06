@@ -1,5 +1,7 @@
-use nota::NotaSource;
 use nota_text_query::{Query, QueryTerm, WordDistance};
+
+#[cfg(feature = "nota-text")]
+use nota::NotaSource;
 
 #[test]
 fn query_round_trips_through_rkyv_bytes() {
@@ -19,6 +21,7 @@ fn query_round_trips_through_rkyv_bytes() {
 }
 
 #[test]
+#[cfg(feature = "nota-text")]
 fn query_decodes_from_readable_nota_text() {
     let source = NotaSource::new(
         "(AllOf [(Contains (Word (typed))) (Near ((Word (search)) (Word (language)) 3))])",

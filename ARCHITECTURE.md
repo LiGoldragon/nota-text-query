@@ -10,7 +10,9 @@ The crate owns:
   negation, and near matching.
 - Deterministic matching semantics over caller-provided text.
 - Deterministic match evidence that consumers can inspect.
-- NOTA and rkyv derive surfaces for the query and evidence types.
+- rkyv derive surfaces for the query and evidence types.
+- Optional NOTA derive surfaces for parser-facing clients that enable the
+  `nota-text` feature.
 
 The crate does not own:
 

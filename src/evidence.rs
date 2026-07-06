@@ -1,16 +1,7 @@
 use crate::query::{QueryTerm, WordDistance};
 
-#[derive(
-    nota::NotaEncode,
-    nota::NotaDecode,
-    rkyv::Archive,
-    rkyv::Serialize,
-    rkyv::Deserialize,
-    Clone,
-    Debug,
-    PartialEq,
-    Eq,
-)]
+#[cfg_attr(feature = "nota-text", derive(nota::NotaEncode, nota::NotaDecode))]
+#[derive(rkyv::Archive, rkyv::Serialize, rkyv::Deserialize, Clone, Debug, PartialEq, Eq)]
 pub enum SearchOutcome {
     Matched(MatchEvidence),
     NotMatched,
@@ -33,17 +24,8 @@ impl SearchOutcome {
     }
 }
 
-#[derive(
-    nota::NotaEncode,
-    nota::NotaDecode,
-    rkyv::Archive,
-    rkyv::Serialize,
-    rkyv::Deserialize,
-    Clone,
-    Debug,
-    PartialEq,
-    Eq,
-)]
+#[cfg_attr(feature = "nota-text", derive(nota::NotaEncode, nota::NotaDecode))]
+#[derive(rkyv::Archive, rkyv::Serialize, rkyv::Deserialize, Clone, Debug, PartialEq, Eq)]
 #[rkyv(
     bytecheck(bounds(__C: rkyv::validation::ArchiveContext)),
     serialize_bounds(
@@ -60,17 +42,8 @@ pub enum MatchEvidence {
     Near(NearEvidence),
 }
 
-#[derive(
-    nota::NotaEncode,
-    nota::NotaDecode,
-    rkyv::Archive,
-    rkyv::Serialize,
-    rkyv::Deserialize,
-    Clone,
-    Debug,
-    PartialEq,
-    Eq,
-)]
+#[cfg_attr(feature = "nota-text", derive(nota::NotaEncode, nota::NotaDecode))]
+#[derive(rkyv::Archive, rkyv::Serialize, rkyv::Deserialize, Clone, Debug, PartialEq, Eq)]
 pub struct ContainsEvidence {
     pub term: QueryTerm,
     pub occurrences: Vec<Occurrence>,
@@ -82,17 +55,8 @@ impl ContainsEvidence {
     }
 }
 
-#[derive(
-    nota::NotaEncode,
-    nota::NotaDecode,
-    rkyv::Archive,
-    rkyv::Serialize,
-    rkyv::Deserialize,
-    Clone,
-    Debug,
-    PartialEq,
-    Eq,
-)]
+#[cfg_attr(feature = "nota-text", derive(nota::NotaEncode, nota::NotaDecode))]
+#[derive(rkyv::Archive, rkyv::Serialize, rkyv::Deserialize, Clone, Debug, PartialEq, Eq)]
 #[rkyv(
     bytecheck(bounds(
         __C: rkyv::validation::ArchiveContext,
@@ -115,17 +79,8 @@ impl CompositeEvidence {
     }
 }
 
-#[derive(
-    nota::NotaEncode,
-    nota::NotaDecode,
-    rkyv::Archive,
-    rkyv::Serialize,
-    rkyv::Deserialize,
-    Clone,
-    Debug,
-    PartialEq,
-    Eq,
-)]
+#[cfg_attr(feature = "nota-text", derive(nota::NotaEncode, nota::NotaDecode))]
+#[derive(rkyv::Archive, rkyv::Serialize, rkyv::Deserialize, Clone, Debug, PartialEq, Eq)]
 pub struct NearEvidence {
     pub left: QueryTerm,
     pub right: QueryTerm,
@@ -149,17 +104,8 @@ impl NearEvidence {
     }
 }
 
-#[derive(
-    nota::NotaEncode,
-    nota::NotaDecode,
-    rkyv::Archive,
-    rkyv::Serialize,
-    rkyv::Deserialize,
-    Clone,
-    Debug,
-    PartialEq,
-    Eq,
-)]
+#[cfg_attr(feature = "nota-text", derive(nota::NotaEncode, nota::NotaDecode))]
+#[derive(rkyv::Archive, rkyv::Serialize, rkyv::Deserialize, Clone, Debug, PartialEq, Eq)]
 pub struct NearOccurrencePair {
     pub left: Occurrence,
     pub right: Occurrence,
@@ -172,9 +118,8 @@ impl NearOccurrencePair {
     }
 }
 
+#[cfg_attr(feature = "nota-text", derive(nota::NotaEncode, nota::NotaDecode))]
 #[derive(
-    nota::NotaEncode,
-    nota::NotaDecode,
     rkyv::Archive,
     rkyv::Serialize,
     rkyv::Deserialize,

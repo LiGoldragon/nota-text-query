@@ -1,6 +1,7 @@
 # nota-text-query
 
-Engine-neutral typed text query language with readable NOTA and rkyv surfaces.
+Engine-neutral typed text query language with a core rkyv surface and optional
+readable NOTA support behind the `nota-text` feature.
 
 Core query variants:
 

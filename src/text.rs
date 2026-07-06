@@ -1,14 +1,5 @@
-#[derive(
-    nota::NotaEncode,
-    nota::NotaDecode,
-    rkyv::Archive,
-    rkyv::Serialize,
-    rkyv::Deserialize,
-    Clone,
-    Debug,
-    PartialEq,
-    Eq,
-)]
+#[cfg_attr(feature = "nota-text", derive(nota::NotaEncode, nota::NotaDecode))]
+#[derive(rkyv::Archive, rkyv::Serialize, rkyv::Deserialize, Clone, Debug, PartialEq, Eq)]
 pub struct NormalizedWord(pub String);
 
 impl NormalizedWord {
@@ -17,17 +8,8 @@ impl NormalizedWord {
     }
 }
 
-#[derive(
-    nota::NotaEncode,
-    nota::NotaDecode,
-    rkyv::Archive,
-    rkyv::Serialize,
-    rkyv::Deserialize,
-    Clone,
-    Debug,
-    PartialEq,
-    Eq,
-)]
+#[cfg_attr(feature = "nota-text", derive(nota::NotaEncode, nota::NotaDecode))]
+#[derive(rkyv::Archive, rkyv::Serialize, rkyv::Deserialize, Clone, Debug, PartialEq, Eq)]
 pub struct SearchText {
     pub original: String,
     pub words: Vec<NormalizedWord>,

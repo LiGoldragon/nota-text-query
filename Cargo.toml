@@ -5,13 +5,17 @@ edition      = "2024"
 rust-version = "1.89"
 license      = "MIT OR Apache-2.0"
 repository   = "https://github.com/LiGoldragon/nota-text-query"
-description  = "Engine-neutral typed text query language with readable NOTA and rkyv surfaces."
+description  = "Engine-neutral typed text query language with rkyv and optional NOTA surfaces."
 
 [lib]
 path = "src/lib.rs"
 
+[features]
+default = []
+nota-text = ["dep:nota"]
+
 [dependencies]
-nota = { package = "nota", git = "https://github.com/LiGoldragon/nota-next.git", branch = "main" }
+nota = { package = "nota", git = "https://github.com/LiGoldragon/nota-next.git", branch = "main", optional = true }
 rkyv      = { version = "0.8", default-features = false, features = ["std", "bytecheck", "little_endian", "pointer_width_32", "unaligned"] }
 thiserror = "2"
 

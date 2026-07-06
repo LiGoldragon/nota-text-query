@@ -1,4 +1,4 @@
-//! Engine-neutral typed text queries with NOTA and rkyv surfaces.
+//! Engine-neutral typed text queries with rkyv and optional NOTA surfaces.
 //!
 //! `nota-text-query` provides a readable query AST and deterministic matching
 //! evidence. Consumers own field selection, ranking, scoring, and storage.
